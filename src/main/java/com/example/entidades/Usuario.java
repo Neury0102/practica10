@@ -3,10 +3,9 @@ package com.example.entidades;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
-/**
- * Created by vacax on 20/09/16.
- */
+
 @Entity
 public class Usuario implements Serializable{
 
@@ -15,6 +14,26 @@ public class Usuario implements Serializable{
     private String nombre;
     private String apellido = "";
     private String password= "";
+    @OneToMany(mappedBy = "usuario")
+    private List<Rol> roles;
+    @Column(name = "enabled", nullable = false, columnDefinition = "int default 1")
+    private int enabled = 1;
+
+    public int getEnabled() {
+        return enabled;
+    }
+
+    public List<Rol> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Rol> roles) {
+        this.roles = roles;
+    }
+
+    public void setEnabled(int enabled) {
+        this.enabled = enabled;
+    }
 
     public String getUsername() {
         return username;

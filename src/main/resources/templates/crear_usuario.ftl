@@ -10,7 +10,7 @@
 <div class="container" id="contenedorCrearUsuario">
 
     <h1>Nuevo Usuario</h1>
-    <form action="#" th:action="@{/crear_usuario/}" th:object="${usuario}" method="POST">
+    <form action="#" th:action="@{/crear_usuario/}"  method="POST">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <div class = "panel panel-default">
             <div class = "panel-body">
@@ -47,7 +47,11 @@
                             <input type="text" class="form-control" id="apellido" name="apellido" required>
                         </div>
                     </div>
-                </div>
+                    <select class="form-control" name="roles" multiple="multiple" >
+                        <option value="ROLE_ADMIN">Administrador</option>
+                        <option value="ROLE_MANAGER">Manager</option>
+                        <option value="ROLE_CAJERO">Cajero</option>
+                    </select>
 
                 <br>
                 <button type="submit" name="action" id="btnCrearUsuario" value="crearUsuario" class="btn btn-primary">Crear</button>

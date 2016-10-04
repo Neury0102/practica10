@@ -1,5 +1,5 @@
 <div class="container">
-    <nav class="navbar navbar-default" style="background-color: #a6e1ec">
+    <nav class="navbar navbar-default" >
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="/administracion/">Administración</a>
@@ -7,6 +7,7 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="crear_usuario/">Crear Usuario</a></li>
+                    <li><a href="crear_rol/">Crear Rol</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="/../">Blog</a></li>

@@ -13,11 +13,10 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     Usuario findByNombre(String nombre);
     List<Usuario> findAllByApellidoNotNull();
     Usuario findByNombreAndApellido(String nombre, String apellido);
+    List<Usuario> findAllByUsername(String username);
+    List<Usuario> findAll();
 
-    //Documentación de algunas formas de hacer las consultas.
-    //http://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods.query-creation
 
-   // List<Usuario> findAllByCiudadIsNotNull();
     List<Usuario> findAllByNombreStartingWith(String nombre);
     //Indicando que ignore el tamaño de la letra.
     List<Usuario> findAllByNombreStartingWithIgnoreCase(String nombre);

@@ -1,5 +1,6 @@
 package com.example.servicios;
 
+import com.example.entidades.Rol;
 import com.example.entidades.Usuario;
 import com.example.repositorio.UsuarioRepository;
 
@@ -19,31 +20,42 @@ public class UsuarioServices {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    @Autowired
+    private RolServices rolServices;
+
     public long cantidadUsuario(){
         return usuarioRepository.count();
     }
 
-    /**
-     * Indica que será una transacción, ver la anotación...
-     * @param usuario
-     * @return
-     */
+
     @Transactional
     public Usuario creacionUsuario(Usuario usuario){
         usuarioRepository.save(usuario);
         return usuario;
     }
 
+    @Transactional
+    public void crearAdmin(){
+        List<Usuario> usuarios = usuarioRepository.findAllByUsername("admin");
+        if(usuarios.size()<1){
+            Usuario usuario =  new Usuario();
+            usuario.setApellido("Admin");
+            usuario.setNombre("Administrador");
+            usuario.setUsername("admin");
+            usuario.setPassword("1234");
+            creacionUsuario(usuario);
+            Rol rol = new Rol();
+            rol.setUsuario(usuario);
+            rol.setRol("ADMIN");
+            rolServices.creacionRol(rol);
+        }
+    }
     public List<Usuario> profesoresConApellidos(){
 
         return usuarioRepository.findAllByApellidoNotNull();
     }
 
-    /**
-     *
-     * @param nombre
-     * @return
-     */
+
     public List<Usuario> listaProfesorInicia(String nombre){
         System.out.println("Nombre recibido: "+nombre);
         return usuarioRepository.findAllByNombreStartingWith(nombre);
@@ -52,6 +64,10 @@ public class UsuarioServices {
     public List<Usuario> listaProfesorIniciaIgnorandoCase(String nombre){
         System.out.println("Nombre recibido: "+nombre);
         return usuarioRepository.findAllByNombreStartingWithIgnoreCase(nombre);
+    }
+
+    public List<Usuario> todosUsuarios(){
+        return usuarioRepository.findAll();
     }
 
    /* public Usuario profesorPorCedula(String cedula) {
