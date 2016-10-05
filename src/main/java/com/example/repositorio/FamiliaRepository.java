@@ -1,7 +1,7 @@
 package com.example.repositorio;
 
+import com.example.entidades.Familia;
 import com.example.entidades.Rol;
-import com.example.entidades.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -9,11 +9,12 @@ import java.util.List;
 /**
  * Created by vacax on 20/09/16.
  */
-public interface RolRepository extends JpaRepository<Rol, Long> {
+public interface FamiliaRepository extends JpaRepository<Familia, Long> {
 
 
 
-    List<Rol> findAll();
+    List<Familia> findAll();
+    Familia findById(int id);
 
 
 }

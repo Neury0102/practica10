@@ -2,17 +2,18 @@ package com.example.entidades;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
-public class Rol implements Serializable{
+public class Familia implements Serializable{
 
     @Id
     @GeneratedValue
     private int id;
-    private String rol;
-    @ManyToOne
-    private Usuario usuario;
+    private String nombre;
+
 
     public int getId() {
         return id;
@@ -22,19 +23,13 @@ public class Rol implements Serializable{
         this.id = id;
     }
 
-    public String getRol() {
-        return rol;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setRol(String rol) {
-        this.rol = rol;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
 }

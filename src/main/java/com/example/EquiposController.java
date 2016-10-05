@@ -22,8 +22,8 @@ import java.util.List;
  * Created by saleta on 10/2/2016.
  */
 @Controller()
-@RequestMapping("/clientes")
-public class ClienteController {
+@RequestMapping("/equipos")
+public class EquiposController {
     @Autowired
     private ClienteServices clienteServices;
 

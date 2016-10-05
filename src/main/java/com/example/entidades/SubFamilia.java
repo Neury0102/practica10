@@ -1,21 +1,32 @@
 package com.example.entidades;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 
 @Entity
-public class Familia implements Serializable{
+public class SubFamilia implements Serializable{
 
     @Id
     @GeneratedValue
     private int id;
-    private String familia;
-    @ManyToOne
-    private Usuario usuario;
+
+    @OneToOne
+    private Familia familia;
+
+    private String nombre;
+
+    @OneToMany
+    private List<Equipo> equipos;
+
+    public List<Equipo> getEquipos() {
+        return equipos;
+    }
+
+    public void setEquipos(List<Equipo> equipos) {
+        this.equipos = equipos;
+    }
 
     public int getId() {
         return id;
@@ -25,19 +36,19 @@ public class Familia implements Serializable{
         this.id = id;
     }
 
-    public String getRol() {
-        return rol;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setRol(String rol) {
-        this.rol = rol;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Familia getFamilia() {
+        return familia;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setFamilia(Familia familia) {
+        this.familia = familia;
     }
 }

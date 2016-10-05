@@ -1,8 +1,9 @@
 package com.example.servicios;
 
 import com.example.entidades.Familia;
-import com.example.entidades.Rol;
+import com.example.entidades.SubFamilia;
 import com.example.repositorio.FamiliaRepository;
+import com.example.repositorio.SubFamiliaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,27 +14,30 @@ import java.util.List;
  * Created by vacax on 20/09/16.
  */
 @Service
-public class FamiliaServices {
+public class SubFamiliaServices {
 
     //Inyectando el repositorio
     @Autowired
-    private FamiliaRepository familiaRepository;
+    private SubFamiliaRepository subFamiliaRepository;
 
     public long cantidadUsuario(){
-        return familiaRepository.count();
+        return subFamiliaRepository.count();
     }
 
 
     @Transactional
-    public Familia creacionFamilia(Familia familia){
-        familiaRepository.save(familia);
+    public SubFamilia cracionSubFamilia(SubFamilia familia){
+        subFamiliaRepository.save(familia);
         return familia;
     }
 
 
 
-    public List<Familia> todasFamilias(){
-        return familiaRepository.findAll();
+    public List<SubFamilia> todasSubFamilias(){
+        return subFamiliaRepository.findAll();
+    }
+    public List<SubFamilia> subFamiliasFamilia(Familia id){
+        return subFamiliaRepository.findAllByFamilia(id);
     }
 
 

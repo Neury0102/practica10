@@ -5,14 +5,34 @@ import java.io.Serializable;
 
 
 @Entity
-public class Rol implements Serializable{
+public class Equipo implements Serializable{
 
     @Id
     @GeneratedValue
     private int id;
-    private String rol;
+    private String nombre;
+    private String ruta_imagen;
+    private int costoDia;
+    private int cantidad;
+
+    public int getCostoDia() {
+        return costoDia;
+    }
+
+    public void setCostoDia(int costoDia) {
+        this.costoDia = costoDia;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
     @ManyToOne
-    private Usuario usuario;
+    private SubFamilia subFamilia;
 
     public int getId() {
         return id;
@@ -22,19 +42,27 @@ public class Rol implements Serializable{
         this.id = id;
     }
 
-    public String getRol() {
-        return rol;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setRol(String rol) {
-        this.rol = rol;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public String getRuta_imagen() {
+        return ruta_imagen;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setRuta_imagen(String ruta_imagen) {
+        this.ruta_imagen = ruta_imagen;
+    }
+
+    public SubFamilia getSubFamilia() {
+        return subFamilia;
+    }
+
+    public void setSubFamilia(SubFamilia subFamilia) {
+        this.subFamilia = subFamilia;
     }
 }
