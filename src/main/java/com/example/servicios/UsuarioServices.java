@@ -46,7 +46,7 @@ public class UsuarioServices {
             creacionUsuario(usuario);
             Rol rol = new Rol();
             rol.setUsuario(usuario);
-            rol.setRol("ADMIN");
+            rol.setRol("ROLE_ADMIN");
             rolServices.creacionRol(rol);
         }
     }

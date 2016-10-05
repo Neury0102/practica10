@@ -14,12 +14,12 @@
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <div class = "panel panel-default">
             <div class = "panel-body">
-                <input type="hidden" value="false" class="form-control" id="username" name="administrador" required >
+                <input type="hidden" value="false" class="form-control" id="cedula" name="administrador" required >
                 <div class="row">
                     <div class ="col-md-12">
                         <div class="form-group">
-                            <label for="username">Nombre de Usuario:</label>
-                            <input type="text" class="form-control" id="username" name="username" th:field="*{username}" required >
+                            <label for="cedula">Nombre de Usuario:</label>
+                            <input type="text" class="form-control" id="cedula" name="cedula" th:field="*{cedula}" required >
                         </div>
                     </div>
                 </div>
@@ -48,8 +48,9 @@
                         </div>
                     </div>
                     <select class="form-control" name="roles" multiple="multiple" >
-                        <option value="papazon">LOLOL</option>
-                        <option value="papazon2">LOLOL2</option>
+                        <option value="ROLE_ADMIN">Administrador</option>
+                        <option value="ROLE_MANAGER">Manager</option>
+                        <option value="ROLE_CAJERO">Cajero</option>
                     </select>
 
                 <br>

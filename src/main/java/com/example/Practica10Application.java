@@ -12,6 +12,8 @@ public class Practica10Application {
 
 
 	public static void main(String[] args) {
+		String workingDir = System.getProperty("user.dir");
+		System.out.println("Current working directory : " + workingDir + "\\src\\main\\resources\\static");
 		ApplicationContext applicationContext = SpringApplication.run(Practica10Application.class, args);
 		UsuarioServices usuarioServices = (UsuarioServices) applicationContext.getBean("usuarioServices");
 		usuarioServices.crearAdmin();

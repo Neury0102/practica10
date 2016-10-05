@@ -20,11 +20,11 @@
                         <div class="form-group">
                             <label for="clientes">Puede administrar clientes</label>
                             <input type="checkbox" name="clientes">
-                            <label for="username">Puede administrar equipos</label>
+                            <label for="cedula">Puede administrar equipos</label>
                             <input type="checkbox" name="equipos">
-                            <label for="username">Puede registrar alquileres</label>
+                            <label for="cedula">Puede registrar alquileres</label>
                             <input type="checkbox" name="alquilar">
-                            <label for="username">Puede ver alquileres</label>
+                            <label for="cedula">Puede ver alquileres</label>
                             <input type="checkbox" name="listado">
                         </div>
                     </div>
