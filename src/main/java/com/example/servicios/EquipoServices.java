@@ -36,5 +36,7 @@ public class EquipoServices {
         return equipoRepository.findAll();
     }
 
+    public Equipo getEquipo(int id){return  equipoRepository.findById(id);}
+
 
 }

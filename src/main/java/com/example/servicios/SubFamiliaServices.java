@@ -40,5 +40,7 @@ public class SubFamiliaServices {
         return subFamiliaRepository.findAllByFamilia(id);
     }
 
+    public SubFamilia getSubfamilia(int id){ return subFamiliaRepository.findById(id);}
+
 
 }

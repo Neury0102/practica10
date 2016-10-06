@@ -10,16 +10,15 @@
 <div class="container" id="contenedorCrearUsuario">
 
     <h1>Nuevo Usuario</h1>
-    <form action="#" th:action="@{/crear_usuario/}"  method="POST">
+    <form action="#" th:action="@{/crear_usuario/}" th:object="${usuario}"  method="POST">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <div class = "panel panel-default">
             <div class = "panel-body">
-                <input type="hidden" value="false" class="form-control" id="cedula" name="administrador" required >
                 <div class="row">
                     <div class ="col-md-12">
                         <div class="form-group">
                             <label for="cedula">Nombre de Usuario:</label>
-                            <input type="text" class="form-control" id="cedula" name="cedula" th:field="*{cedula}" required >
+                            <input type="text" class="form-control" id="username" name="username"  required >
                         </div>
                     </div>
                 </div>

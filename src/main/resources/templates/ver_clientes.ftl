@@ -25,7 +25,7 @@
         <a href="crear_cliente/">Nuevo...</a>
         <#list clientes as u>
         <tr class="row-click" data-href="/administracion/editar/${u.cedula}">
-            <td width="50px"><a href="editar_cliente?cedula=${u.cedula}"><img style="width: 150px;height: 100px;" class="img-circle" src="/${u.ruta_imagen}"/></a> </td>
+            <td width="50px"><a href="editar_cliente?cedula=${u.cedula}"><img style="width: 150px;height: 100px;" class="img-circle" src="/archivos/${u.ruta_imagen}"/></a> </td>
             <td>${u.nombre}</td>
             <td>${u.apellido}</td>
             <td>${u.cedula}</td>

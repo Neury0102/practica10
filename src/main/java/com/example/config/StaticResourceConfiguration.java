@@ -8,6 +8,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 public class StaticResourceConfiguration extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/**").addResourceLocations("file:///C:/var/clientes/");
+         registry.addResourceHandler("/archivos/**").addResourceLocations("file:///C:/var/clientes/");
+         String workingDir = System.getProperty("user.dir");
+         //registry.addResourceHandler("/static/**").addResourceLocations(workingDir + "\\src\\main\\resources\\static");
     }
 }

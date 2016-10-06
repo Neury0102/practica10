@@ -12,12 +12,10 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Locale;
 import java.util.Optional;
 
-/**
- * Created by vacax on 21/09/16.
- */
+
 @Controller()
 @RequestMapping("/login")
-public class FreeMarkerController {
+public class LoginController {
 
     @Autowired
     private MessageSource messageSource;

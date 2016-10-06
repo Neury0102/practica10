@@ -10,27 +10,27 @@
 <#include "/header.ftl">
 
 <div class="container">
-    <h1>Clientes</h1>
+    <h1>Equipos</h1>
+
     <table class="table table-bordered">
         <thead>
         <tr>
             <th>Foto</th>
             <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Cedula</th>
-            <th>Correo</th>
+            <th>Familia</th>
+            <th>SubFamilia</th>
+            <th>Disponible</th>
         </tr>
         </thead>
         <tbody>
-        <a href="crear_cliente/">Nuevo...</a>
-        <#list clientes as u>
-        <tr class="row-click" data-href="/administracion/editar/${u.cedula}">
-            <td width="50px"><a href="editar_cliente?cedula=${u.cedula}"><img style="width: 150px;height: 100px;" class="img-circle" src="/archivos/${u.ruta_imagen}"/></a> </td>
+        <a href="crear_equipo/">Nuevo...</a>
+        <#list equipos as u>
+        <tr class="row-click" data-href="/administracion/editar/${u.id}">
+            <td width="50px"><a href="editar_equipo?id=${u.id}"><img style="width: 150px;height: 100px;" class="img-circle" src="/archivos/${u.ruta_imagen}"/></a> </td>
             <td>${u.nombre}</td>
-            <td>${u.apellido}</td>
-            <td>${u.cedula}</td>
-            <td>${u.correo}</td>
-
+            <td>${u.subFamilia.familia.nombre}</td>
+            <td>${u.subFamilia.nombre}</td>
+            <td>${u.cantidad}</td>
         </tr>
         </#list>
 

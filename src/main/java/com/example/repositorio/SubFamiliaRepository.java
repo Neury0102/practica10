@@ -17,5 +17,7 @@ public interface SubFamiliaRepository extends JpaRepository<SubFamilia, Long> {
 
     List<SubFamilia> findAllByFamilia(Familia id);
 
+    SubFamilia findById(int id);
+
 
 }

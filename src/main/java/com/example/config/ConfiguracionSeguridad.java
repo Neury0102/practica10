@@ -44,7 +44,7 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
         //Marcando las reglas para permitir unicamente los usuarios
         http.authorizeRequests()
                 .antMatchers("/zona_admin/**")
-                .hasAnyRole("ADMIN")
+                .hasAnyRole("ADMIN").antMatchers("/clientes/**").hasAnyRole("ADMIN","MANAGER")
                 .and()
                 .formLogin()
                     .loginPage("/login") //indicando la ruta que estaremos utilizando.
