@@ -1,6 +1,7 @@
 package com.example.servicios;
 
 import com.example.entidades.Rol;
+import com.example.entidades.Usuario;
 import com.example.repositorio.RolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,6 +34,9 @@ public class RolServices {
 
     public List<Rol> todosRoles(){
         return rolRepository.findAll();
+    }
+    public List<Rol> rolesUsuario(Usuario usuario){
+        return rolRepository.findAllByUsuario(usuario);
     }
 
 

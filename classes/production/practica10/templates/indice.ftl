@@ -7,17 +7,9 @@
 
 <body>
 
-<#include "/adminHeader.ftl">
+<#include "/header.ftl">
+<h1>Principal</h1>
 
-<div class="container">
-    <h1><@spring.message "familia_equipos" /></h1>
-
-        <a href="crear_familia/"><@spring.message "nuevo" />...</a>
-        <div class="list-group">
-        <#list familias as u>
-                <a href="editar_familia?id=${u.id}" class="list-group-item">${u.nombre}</a>
-        </#list>
-        </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="/webjars/jquery/3.1.0/jquery.min.js"></script>

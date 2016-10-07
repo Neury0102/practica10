@@ -10,19 +10,19 @@
 <#include "/header.ftl">
 
 <div class="container">
-    <h1>Clientes</h1>
+    <h1><@spring.message "clientes" /></h1>
     <table class="table table-bordered">
         <thead>
         <tr>
-            <th>Foto</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Cedula</th>
-            <th>Correo</th>
+            <th><@spring.message "foto" /></th>
+            <th><@spring.message "nombre" /></th>
+            <th><@spring.message "apellido" /></th>
+            <th><@spring.message "cedula" /></th>
+            <th><@spring.message "correo" /></th>
         </tr>
         </thead>
         <tbody>
-        <a href="crear_cliente/">Nuevo...</a>
+        <a href="crear_cliente/"><@spring.message "nuevo" /></a>
         <#list clientes as u>
         <tr class="row-click" data-href="/administracion/editar/${u.cedula}">
             <td width="50px"><a href="editar_cliente?cedula=${u.cedula}"><img style="width: 150px;height: 100px;" class="img-circle" src="/archivos/${u.ruta_imagen}"/></a> </td>

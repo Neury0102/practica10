@@ -15,5 +15,7 @@ public interface RolRepository extends JpaRepository<Rol, Long> {
 
     List<Rol> findAll();
 
+    List<Rol> findAllByUsuario(Usuario usuario);
+
 
 }

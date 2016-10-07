@@ -10,20 +10,20 @@
 <#include "/header.ftl">
 
 <div class="container">
-    <h1>Equipos</h1>
+    <h1><@spring.message "equipos" /></h1>
 
     <table class="table table-bordered">
         <thead>
         <tr>
-            <th>Foto</th>
-            <th>Nombre</th>
-            <th>Familia</th>
-            <th>SubFamilia</th>
-            <th>Disponible</th>
+            <th><@spring.message "foto" /></th>
+            <th><@spring.message "nombre" /></th>
+            <th><@spring.message "familia" /></th>
+            <th><@spring.message "sub_familia" /></th>
+            <th><@spring.message "disponible" /></th>
         </tr>
         </thead>
         <tbody>
-        <a href="crear_equipo/">Nuevo...</a>
+        <a href="crear_equipo/"><@spring.message "nuevo" />...</a>
         <#list equipos as u>
         <tr class="row-click" data-href="/administracion/editar/${u.id}">
             <td width="50px"><a href="editar_equipo?id=${u.id}"><img style="width: 150px;height: 100px;" class="img-circle" src="/archivos/${u.ruta_imagen}"/></a> </td>

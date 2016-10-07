@@ -9,8 +9,8 @@
 <#include "/adminHeader.ftl">
 <div class="container" id="contenedorCrearUsuario">
 
-    <h1>Editar Familia</h1>
-    <h4>Sub familias de ${familia.nombre}:</h4>
+    <h1><@spring.message "editar_familia" /></h1>
+    <h4><@spring.message "sub_familias" /> ${familia.nombre}:</h4>
     <div class="list-group">
     <#list sub_familias as s>
         <li class="list-group-item">${s.nombre}</li>
@@ -19,7 +19,7 @@
 
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-        Nueva Sub-Familia
+    <@spring.message "nueva_subfamilia" />
     </button>
 
 
@@ -33,11 +33,11 @@
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <div class = "panel panel-default">
                     <div class = "panel-body">
-                        <label for="nombre">Nombre:</label>
+                        <label for="nombre"><@spring.message "nombre" />:</label>
                         <input type="text" class="form-control" id="familia" name="nombre">
                         <input type="hidden" name="familia_id" value="${familia.id}"/>
                         <br>
-                        <button type="submit" name="action" id="btnCrearUsuario" value="crearUsuario" class="btn btn-primary">Agregar</button>
+                        <button type="submit" name="action" id="btnCrearUsuario" value="crearUsuario" class="btn btn-primary"><@spring.message "agregar" /></button>
 
                     </div>
                 </div>
@@ -48,6 +48,7 @@
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="/webjars/jquery/3.1.0/jquery.min.js"></script>
+<script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
 </body>

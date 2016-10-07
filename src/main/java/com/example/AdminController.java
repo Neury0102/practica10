@@ -6,12 +6,14 @@ import com.example.servicios.RolServices;
 import com.example.servicios.SubFamiliaServices;
 import com.example.servicios.UsuarioServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by saleta on 10/2/2016.
@@ -21,6 +23,10 @@ import java.util.ArrayList;
 public class AdminController {
     @Autowired
     private UsuarioServices usuarioServices;
+
+    @Autowired
+    private MessageSource messageSource;
+
 
     @Autowired
     private FamiliaServices familiaServices;
@@ -35,7 +41,6 @@ public class AdminController {
     @RequestMapping("/")
     public String index(Model model){
         model.addAttribute("usuarios",usuarioServices.todosUsuarios());
-
 
         return "/administracion";
     }

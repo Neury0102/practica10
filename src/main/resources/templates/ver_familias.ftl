@@ -10,9 +10,9 @@
 <#include "/adminHeader.ftl">
 
 <div class="container">
-    <h1>Familias de Equipos</h1>
+    <h1><@spring.message "familia_equipos" /></h1>
 
-        <a href="crear_familia/">Nueva...</a>
+        <a href="crear_familia/"><@spring.message "nuevo" />...</a>
         <div class="list-group">
         <#list familias as u>
                 <a href="editar_familia?id=${u.id}" class="list-group-item">${u.nombre}</a>
