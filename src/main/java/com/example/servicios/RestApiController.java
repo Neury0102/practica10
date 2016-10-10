@@ -1,5 +1,6 @@
 package com.example.servicios;
 
+import com.example.entidades.Cliente;
 import com.example.entidades.Familia;
 
 import com.google.gson.Gson;
@@ -23,6 +24,8 @@ public class RestApiController {
     @Autowired
     private FamiliaServices familiaServices;
 
+    @Autowired
+    private ClienteServices clienteServices;
 
 
 
@@ -32,6 +35,14 @@ public class RestApiController {
         Familia familia = familiaServices.getFamilia(familia_id);
         Gson gson = new Gson();
         String result = gson.toJson(subFamiliaServices.subFamiliasFamilia(familia));
+        return result;
+    }
+
+    @RequestMapping(value ="/listado_clientes/",method = RequestMethod.GET, produces = "application/json")
+    public String getClientes(){
+        List<Cliente> clientes = clienteServices.todosClientes();
+        Gson gson = new Gson();
+        String result = gson.toJson(clientes);
         return result;
     }
 
