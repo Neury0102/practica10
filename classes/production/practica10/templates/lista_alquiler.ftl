@@ -11,7 +11,7 @@
 
 <div class="container">
     <h1><@spring.message "equipos" /></h1>
-    <a href="/alquileres/ver/lista/"><@spring.message "ver_articulos_alquilados"/></a>
+    <a href="/alquileres/ver_lista?cliente=${cliente}"><@spring.message "ver_articulos_alquilados"/></a>
     <table class="table table-bordered">
         <thead>
         <tr>

@@ -19,6 +19,8 @@ public class Alquiler implements Serializable{
 
     private Boolean devuelto;
 
+    private int diasAlquilado =0;
+
 
 
     @ManyToOne
@@ -62,6 +64,14 @@ public class Alquiler implements Serializable{
 
     public void setDevuelto(Boolean devuelto) {
         this.devuelto = devuelto;
+    }
+
+    public int getDiasAlquilado() {
+        return diasAlquilado;
+    }
+
+    public void setDiasAlquilado(int diasAlquilado) {
+        this.diasAlquilado = diasAlquilado;
     }
 
 
