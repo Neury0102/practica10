@@ -25,14 +25,13 @@
         <tbody>
         <#list equipos as u>
         <tr class="row-click" data-href="/administracion/editar/${u.id}">
-            <td width="50px"><a href="alquilar_equipo?id=${u.id}"><img style="width: 150px;height: 100px;" class="img-circle" src="/archivos/${u.ruta_imagen}"/></a> </td>
+            <td width="50px"><a href="alquilar_equipo?id=${u.id}&cliente=${cliente}"><img style="width: 150px;height: 100px;" class="img-circle" src="/archivos/${u.ruta_imagen}"/></a> </td>
             <td>${u.nombre}</td>
             <td>${u.subFamilia.familia.nombre}</td>
             <td>${u.subFamilia.nombre}</td>
             <td>${u.cantidad}</td>
         </tr>
         </#list>
-
         </tbody>
     </table>
 
