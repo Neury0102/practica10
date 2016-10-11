@@ -6,9 +6,9 @@ $( document ).ready(function() {
 
     $('.buscar-clientes').click(function () {
         $.get("/listado_clientes/", function(data, status){
-            $('#clientes').empty();
+            $('.clientes').empty();
             data.forEach(function (sub) {
-                $('#clientes').append($('<option>', {
+                $('.clientes').append($('<option>', {
                     value: sub.cedula,
                     text: sub.nombre +" " +sub.apellido
                 }));

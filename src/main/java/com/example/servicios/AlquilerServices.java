@@ -2,6 +2,7 @@ package com.example.servicios;
 
 import com.example.entidades.Alquiler;
 import com.example.entidades.Cliente;
+import com.example.entidades.Factura;
 import com.example.repositorio.AlquilerRepository;
 import com.example.repositorio.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,8 @@ public class AlquilerServices {
     public List<Alquiler> todosAlquileres(){
         return alquilerRepository.findAll();
     }
+
+    public List<Alquiler> alquileresFactura(Factura factura){return alquilerRepository.findByFactura(factura);}
 
     public Alquiler getAlquiler(int id){
         return alquilerRepository.findById(id);

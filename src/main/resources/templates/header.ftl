@@ -45,7 +45,7 @@
                 <div class = "panel panel-default">
                     <div class = "panel-body">
                         <label for="nombre"><@spring.message "nombre" />:</label>
-                        <select name="clientes" class="form-control"  id="clientes">
+                        <select name="clientes" class="form-control clientes"  >
 
                         </select>
                         <br>
@@ -62,12 +62,12 @@
 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form action="/alquileres/redirect/"   th:action="@{/alquileres/redirect_devolver/}"   method="POST">
+            <form action="/alquileres/redirect_devolver/"   th:action="@{/alquileres/redirect_devolver/}"   method="POST">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <div class = "panel panel-default">
                     <div class = "panel-body">
                         <label for="nombre"><@spring.message "nombre" />:</label>
-                        <select name="clientes" class="form-control"  id="clientes">
+                        <select name="clientes" class="form-control clientes" >
 
                         </select>
                         <br>

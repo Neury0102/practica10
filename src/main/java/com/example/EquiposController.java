@@ -7,6 +7,7 @@ import com.example.entidades.SubFamilia;
 import com.example.servicios.EquipoServices;
 import com.example.servicios.FamiliaServices;
 import com.example.servicios.SubFamiliaServices;
+import org.apache.commons.lang3.SystemUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -85,7 +86,11 @@ public class EquiposController {
             SubFamilia su = subFamiliaServices.getSubfamilia(subFamilia);
             equipo.setSubFamilia(su);
             String filename = equipo.getId() + "_" + uploadfile.getOriginalFilename();
-            String directory ="C:\\var\\clientes";
+            String directory;
+            if(SystemUtils.IS_OS_LINUX)
+                directory="/home/saleta/clientes";
+            else
+                directory ="C:\\var\\clientes";
             String filepath = Paths.get(directory, filename).toString();
 
             BufferedOutputStream stream =

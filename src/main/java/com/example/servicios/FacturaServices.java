@@ -1,6 +1,7 @@
 package com.example.servicios;
 
 import com.example.entidades.Alquiler;
+import com.example.entidades.Cliente;
 import com.example.entidades.Factura;
 import com.example.repositorio.FacturaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,8 @@ public class FacturaServices {
     public Factura getFactura(int id){
         return facturaRepository.findById(id);
     }
+
+    public List<Factura> getFacturasCliente(Cliente c){return facturaRepository.encontrarFacturaCliente(c);}
 
 
 }

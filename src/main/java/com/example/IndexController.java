@@ -142,13 +142,31 @@ public class IndexController {
     @RequestMapping("/alquileres/devolver_cliente")
     public String getAlquilerDevolver(Model model,  @RequestParam("cliente") String cedula, HttpServletRequest request) {
 
+        Cliente cliente = clienteServices.getCliente(cedula);
+        List<Factura> facturas = facturaServices.getFacturasCliente(cliente);
+        ArrayList<Alquiler> todosAlquileres = new ArrayList<>();
+        for(Factura f : facturas){
+            List<Alquiler> alquileres = alquilerServices.alquileresFactura(f);
+            for(Alquiler a: alquileres){
+                if(!a.getDevuelto())
+                    todosAlquileres.add(a);
+            }
+        }
 
         model.addAttribute("cliente", cedula);
-
+        model.addAttribute("alquileres", todosAlquileres);
         return "/ver_alquileres_cliente";
     }
 
+    @PostMapping("/alquileres/devolver_equipo/")
+    public String alquilerDevolver( @RequestParam("alquiler") int alquiler, @RequestParam("cedula") String cedula  ){
 
+        Alquiler alquiler1 = alquilerServices.getAlquiler(alquiler);
+        alquiler1.setDevuelto(true);
+        alquilerServices.creacionAlquiler(alquiler1);
+        return "redirect:/alquileres/devolver_cliente?cliente="+ cedula;
+
+    }
 
 
 }
