@@ -108,6 +108,12 @@ public class IndexController {
         return "redirect:/alquileres/crear_lista?cliente="+ cedula;
     }
 
+    @PostMapping("/alquileres/redirect_devolver/")
+    public String alquilerDevolver( @RequestParam("clientes") String cedula ){
+
+        return "redirect:/alquileres/devolver_cliente?cliente="+ cedula;
+    }
+
     @Transactional
     @PostMapping("/alquileres/facturar/")
     public String alquilerFacturar( HttpServletRequest request, @RequestParam("cliente") String cedula ){
@@ -128,8 +134,21 @@ public class IndexController {
             equipoServices.creacionEquipo(e);
 
         }
+
+        request.setAttribute("listaAlquiler",new ArrayList<Alquiler>());
         return "redirect:/";
     }
+
+    @RequestMapping("/alquileres/devolver_cliente")
+    public String getAlquilerDevolver(Model model,  @RequestParam("cliente") String cedula, HttpServletRequest request) {
+
+
+        model.addAttribute("cliente", cedula);
+
+        return "/ver_alquileres_cliente";
+    }
+
+
 
 
 }

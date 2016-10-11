@@ -2,6 +2,7 @@ package com.example;
 
 import com.example.entidades.Cliente;
 import com.example.servicios.ClienteServices;
+import org.apache.commons.lang3.SystemUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -66,7 +67,11 @@ public class ClienteController {
         try {
 
             String filename = cliente.getCedula() + "_" + uploadfile.getOriginalFilename();
-            String directory ="C:\\var\\clientes";
+            String directory;
+            if(SystemUtils.IS_OS_LINUX)
+                directory="/home/saleta/clientes";
+            else
+                directory ="C:\\var\\clientes";
             String filepath = Paths.get(directory, filename).toString();
 
             BufferedOutputStream stream =

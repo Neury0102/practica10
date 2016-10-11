@@ -20,6 +20,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><@spring.message "alquiler" /> <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li class="buscar-clientes"><a data-toggle="modal" data-target="#myModal"><@spring.message "realizar_alquiler" /></a></li>
+                            <li class="buscar-clientes"><a data-toggle="modal" data-target="#myModal2"><@spring.message "devolver_equipos" /></a></li>
 
                         </ul>
                     </li>
@@ -48,7 +49,29 @@
 
                         </select>
                         <br>
-                        <button type="submit" name="action" id="btnCrearUsuario" value="crearUsuario" class="btn btn-primary"><@spring.message "agregar" /></button>
+                        <button type="submit" name="action" id="btnCrearUsuario" value="crearUsuario" class="btn btn-primary">Continuar</button>
+
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="/alquileres/redirect/"   th:action="@{/alquileres/redirect_devolver/}"   method="POST">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                <div class = "panel panel-default">
+                    <div class = "panel-body">
+                        <label for="nombre"><@spring.message "nombre" />:</label>
+                        <select name="clientes" class="form-control"  id="clientes">
+
+                        </select>
+                        <br>
+                        <button type="submit" name="action" id="btnCrearUsuario" value="crearUsuario" class="btn btn-primary">Continuar</button>
 
                     </div>
                 </div>
