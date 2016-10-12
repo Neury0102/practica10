@@ -62,5 +62,6 @@ public class AlquilerServices {
 
     public List<Alquiler> buscarPorCliente(Cliente c){return alquilerRepository.buscarPorCliente(c);}
     public List<Object> subFamiliasDias(){return alquilerRepository.diasSubfamilias();}
+    public List<Object> familiasDias(){return alquilerRepository.diasFamilias();}
 
 }

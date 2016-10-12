@@ -9,10 +9,18 @@
 <body>
 
 <#include "/header.ftl">
-<h1>Graficos</h1>
 
-<div id="demo"></div>
-<br type="_moz">
+<div class="container">
+    <h1><@spring.message "graficos"/></h1>
+    <div class = "panel panel-default">
+        <div class = "panel-body">
+            <div id="demo"></div>
+            <br type="_moz">
+            <div id="demo2"></div>
+            <br type="_moz">
+        </div>
+    </div>
+</div>
 
 
 

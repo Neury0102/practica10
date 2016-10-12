@@ -17,7 +17,7 @@
         <tr>
             <th><@spring.message "nombre" /></th>
             <th><@spring.message "familia" /></th>
-            <th><@spring.message "sub_familia" /></th>
+            <th><@spring.message "fecha" /></th>
             <th><@spring.message "disponible" /></th>
         </tr>
         </thead>

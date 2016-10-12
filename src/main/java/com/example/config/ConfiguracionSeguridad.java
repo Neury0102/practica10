@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 /**
  * Created by vacax on 27/09/16.
@@ -18,15 +19,7 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
     DataSource dataSource;
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        //Cargando los usuarios en memoria.
-//        auth.inMemoryAuthentication()
-//                .withUser("admin")
-//                .password("1234")
-//                .roles("ADMIN","USER")
-//                .and()
-//                .withUser("usuario")
-//                .password("1234")
-//                .roles("USER");
+
 
         auth.jdbcAuthentication().dataSource(dataSource)
                 .usersByUsernameQuery(
@@ -34,24 +27,20 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
                 "select usuario_username, rol from rol where usuario_username=?");
     }
 
-    /*
-     * Permite configurar las reglas de seguridad.
-     * @param http
-     * @throws Exception
-    */
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         //Marcando las reglas para permitir unicamente los usuarios
         http.authorizeRequests()
                 .antMatchers("/zona_admin/**")
                 .hasAnyRole("ADMIN").antMatchers("/clientes/**").hasAnyRole("ADMIN","MANAGER")
+                .antMatchers("/alquileres/**").hasAnyRole("ADMIN","CAJERO")
                 .and()
                 .formLogin()
                     .loginPage("/login") //indicando la ruta que estaremos utilizando.
                     .failureUrl("/login?error")
                     .permitAll()
                 .and()
-                .logout()
-                    .permitAll();
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login");
     }
 }

@@ -10,11 +10,7 @@
                     <li><a href="/zona_admin/familias/"><@spring.message "familia_equipos" /></a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/../">Main</a></li>
-                    <li>
-                        <form action="/cerrarsesion/" method="POST" class="form-signin">
-                            <button style="border-radius: 30px; background-color:transparent; border: snow; margin-top: 13px;  " type="submit"><@spring.message "cerrar_sesion" /></button>
-                        </form></li>
+                    <li><a href="/logout"><@spring.message "cerrar_sesion" /></a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->

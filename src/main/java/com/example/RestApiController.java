@@ -62,6 +62,14 @@ public class RestApiController {
         return result;
     }
 
+    @RequestMapping(value ="/familias/",method = RequestMethod.GET, produces = "application/json")
+    public String getFamilias(){
+        List<Object> objetos = alquilerServices.familiasDias();
+        Gson gson = new Gson();
+        String result = gson.toJson(objetos);
+        return result;
+    }
+
     @RequestMapping(value ="/validar_existencia",method = RequestMethod.GET, produces = "application/json")
     public String validarExistencia(@RequestParam("id") int equipo_id){
         Equipo equipo = equipoService.getEquipo(equipo_id);

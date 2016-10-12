@@ -149,7 +149,7 @@ public class IndexController {
 
         }
 
-        request.setAttribute("listaAlquiler",new ArrayList<Alquiler>());
+        request.getSession().setAttribute("listaAlquiler",new ArrayList<Alquiler>());
         return "redirect:/";
     }
 
