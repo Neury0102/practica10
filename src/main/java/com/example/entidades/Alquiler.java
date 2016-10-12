@@ -2,7 +2,9 @@ package com.example.entidades;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 @Entity
@@ -75,6 +77,11 @@ public class Alquiler implements Serializable{
     }
 
     public int getSubtotal(){return diasAlquilado* equipo.getCostoDia();}
+
+    public int getCalculoDias(){
+        long diff = new Date().getTime()- this.getFactura().getFecha().getTime();
+        return (int)TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+    }
 
 
 }

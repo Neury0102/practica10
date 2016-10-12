@@ -43,8 +43,13 @@ public class IndexController {
     @RequestMapping("/")
     public String getLoginPage(Model model, HttpServletRequest request) {
 
-
         return "/indice";
+    }
+
+    @RequestMapping("/alquileres/ver_graficos/")
+    public String graficos(Model model) {
+
+        return "/ver_graficos";
     }
 
     @RequestMapping("/alquileres/crear_lista")
@@ -114,6 +119,14 @@ public class IndexController {
 
         return "redirect:/alquileres/devolver_cliente?cliente="+ cedula;
     }
+
+    @PostMapping("/alquileres/redirect_alq_clientes/")
+    public String clientesAlquileres( @RequestParam("clientes") String cedula ){
+
+        return "redirect:/alquileres/alq_clientes?cliente="+ cedula;
+    }
+
+
 
     @Transactional
     @PostMapping("/alquileres/facturar/")
@@ -192,6 +205,26 @@ public class IndexController {
 
         return "/ver_factura";
     }
+
+    @RequestMapping("/alquileres/no_devueltos/")
+    public String getAlquileresNoDevueltos(Model model, HttpServletRequest request) {
+
+        List<Alquiler> alquileres = alquilerServices.alquileresNoDevueltos(false);
+        model.addAttribute("alquileres", alquileres);
+        return "/ver_no_devuelto";
+    }
+
+    @RequestMapping("/alquileres/alq_clientes")
+    public String getAlquileresCliente(Model model, HttpServletRequest request, @RequestParam("cliente") String cedula) {
+        Cliente c = clienteServices.getCliente(cedula);
+        List<Alquiler> alquileres = alquilerServices.buscarPorCliente(c);
+        model.addAttribute("alquileres",alquileres);
+        model.addAttribute("cliente",c.getNombre() + " " + c.getApellido());
+
+        return "/alquileres_por_cliente";
+    }
+
+
 
 
 }

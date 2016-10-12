@@ -14,6 +14,7 @@
                             <li><a href="/clientes/"><@spring.message "clientes" /></a></li>
                             <li><a href="/equipos/"><@spring.message "equipos" /></a></li>
 
+
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -21,6 +22,9 @@
                         <ul class="dropdown-menu">
                             <li class="buscar-clientes"><a data-toggle="modal" data-target="#myModal"><@spring.message "realizar_alquiler" /></a></li>
                             <li class="buscar-clientes"><a data-toggle="modal" data-target="#myModal2"><@spring.message "devolver_equipos" /></a></li>
+                            <li class="buscar-clientes"><a data-toggle="modal" data-target="#myModal10"><@spring.message "alquileres_por_cliente" /></a></li>
+                            <li><a href="/alquileres/no_devueltos/"><@spring.message "equipos_no_devueltos" /></a></li>
+                            <li><a href="/alquileres/ver_graficos/"><@spring.message "graficos" /></a></li>
 
                         </ul>
                     </li>
@@ -63,6 +67,28 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <form action="/alquileres/redirect_devolver/"   th:action="@{/alquileres/redirect_devolver/}"   method="POST">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                <div class = "panel panel-default">
+                    <div class = "panel-body">
+                        <label for="nombre"><@spring.message "nombre" />:</label>
+                        <select name="clientes" class="form-control clientes" >
+
+                        </select>
+                        <br>
+                        <button type="submit" name="action" id="btnCrearUsuario" value="crearUsuario" class="btn btn-primary">Continuar</button>
+
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal10" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="/alquileres/redirect_alq_clientes/"   th:action="@{/alquileres/redirect_alq_clientes/}"   method="POST">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <div class = "panel panel-default">
                     <div class = "panel-body">

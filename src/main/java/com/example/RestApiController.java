@@ -4,10 +4,7 @@ import com.example.entidades.Cliente;
 import com.example.entidades.Equipo;
 import com.example.entidades.Familia;
 
-import com.example.servicios.ClienteServices;
-import com.example.servicios.EquipoServices;
-import com.example.servicios.FamiliaServices;
-import com.example.servicios.SubFamiliaServices;
+import com.example.servicios.*;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -35,6 +32,9 @@ public class RestApiController {
     @Autowired
     private EquipoServices equipoService;
 
+    @Autowired
+    private AlquilerServices alquilerServices;
+
 
 
 
@@ -51,6 +51,14 @@ public class RestApiController {
         List<Cliente> clientes = clienteServices.todosClientes();
         Gson gson = new Gson();
         String result = gson.toJson(clientes);
+        return result;
+    }
+
+    @RequestMapping(value ="/sub_familias/",method = RequestMethod.GET, produces = "application/json")
+    public String getSubfamilias(){
+        List<Object> objetos = alquilerServices.subFamiliasDias();
+        Gson gson = new Gson();
+        String result = gson.toJson(objetos);
         return result;
     }
 
