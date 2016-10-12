@@ -31,12 +31,13 @@
             <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                        <form action="/alquileres/redirect/"   th:action="@{/alquileres/redirect/}"   method="POST">
+                        <form action="/alquileres/devolver_equipo/"     method="POST">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             <div class = "panel panel-default">
                                 <div class = "panel-body">
                                     <label for="nombre"><@spring.message "confirmacion" /></label>
-                                    <input type="hidden" value="${u.equipo.id}" name="equipo">
+                                    <input type="hidden" value="${u.id}" name="alquiler">
+                                    <input type="hidden" value="${cliente}" name="cedula">
 
                                     </select>
                                     <br>

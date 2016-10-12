@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 
 
 @Controller()
@@ -163,9 +164,33 @@ public class IndexController {
 
         Alquiler alquiler1 = alquilerServices.getAlquiler(alquiler);
         alquiler1.setDevuelto(true);
+        long diff = new Date().getTime()- alquiler1.getFactura().getFecha().getTime();
+        alquiler1.setDiasAlquilado((int)TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS));
         alquilerServices.creacionAlquiler(alquiler1);
+        if(alquilerServices.facturaEntregada(alquiler1.getFactura().getId())){
+            Factura f = alquiler1.getFactura();
+            int total = 0 ;
+            for(Alquiler a: alquilerServices.alquileresFactura(f)){
+                total+= a.getSubtotal();
+            }
+            f.setTotal(total);
+            facturaServices.creacionFactura(f);
+            return "redirect:/alquileres/ver_factura?factura="+ alquiler1.getFactura().getId();
+        }
+
         return "redirect:/alquileres/devolver_cliente?cliente="+ cedula;
 
+
+    }
+
+    @RequestMapping("/alquileres/ver_factura")
+    public String showFactura(Model model,  @RequestParam("factura") int  id) {
+
+        Factura factura = facturaServices.getFactura(id);
+        List<Alquiler> alquileres = alquilerServices.alquileresFactura(factura);
+        model.addAttribute("lista_alquileres",alquileres);
+
+        return "/ver_factura";
     }
 
 

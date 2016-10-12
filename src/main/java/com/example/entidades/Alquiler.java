@@ -74,5 +74,7 @@ public class Alquiler implements Serializable{
         this.diasAlquilado = diasAlquilado;
     }
 
+    public int getSubtotal(){return diasAlquilado* equipo.getCostoDia();}
+
 
 }

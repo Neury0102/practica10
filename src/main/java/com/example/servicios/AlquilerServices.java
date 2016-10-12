@@ -20,6 +20,10 @@ public class AlquilerServices {
     //Inyectando el repositorio
     @Autowired
     private AlquilerRepository alquilerRepository;
+    @Autowired
+    private FacturaServices facturaServices;
+
+
 
     public long cantidadUsuario(){
         return alquilerRepository.count();
@@ -42,6 +46,16 @@ public class AlquilerServices {
 
     public Alquiler getAlquiler(int id){
         return alquilerRepository.findById(id);
+    }
+
+    public boolean facturaEntregada(int id){
+        Factura factura = facturaServices.getFactura(id);
+        List<Alquiler> alquileres = alquileresFactura(factura);
+        for(Alquiler a: alquileres){
+            if(!a.getDevuelto())
+                return false;
+        }
+        return true;
     }
 
 
